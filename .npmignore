@@ -1,0 +1,7 @@
+node_modules
+__test__
+.github
+src/**/*
+.babelrc
+.gitignore
+.npmrc

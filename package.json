@@ -1,0 +1,60 @@
+{
+  "name": "@trupropel/aws-s3-file-upload",
+  "version": "0.0.1",
+  "description": "Library for uploading to AWS S3",
+  "author": {
+    "name": "Trupropel <info@trupropel.com> (http://www.trupropel.com)"
+  },
+  "homepage": "https://github.com/trupropel/aws-s3-file-upload#readme",
+  "keywords": [
+    "react",
+    "react-native",
+    "react-component",
+    "aws",
+    "s3",
+    "image",
+    "upload",
+    "ios",
+    "android"
+  ],
+  "main": "index.js",
+  "files": [
+    "lib",
+    "src",
+    "index.js"
+  ],
+  "jest": {
+    "testPathIgnorePatterns": [
+      "node_modules/"
+    ]
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "clean": "rm -rf lib",
+    "prepublish": "yarn run clean && yarn run test && yarn run build",
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "dependencies": {
+    "buffer": "^4.5.1",
+    "crypto-js": "^3.1.6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-jest": "^19.0.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "jest": "^19.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trupropel/aws-s3-file-upload"
+  },
+  "bugs": {
+    "url": "https://github.com/trupropel/aws-s3-file-upload/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/trupropel"
+  }
+}

@@ -47,4 +47,36 @@ export class RNS3 {
       .send()
       .then(setBodyAsParsedXML)
   }
+
+  /**
+   * Use this method to upload images as blobs from web browsers
+   * @param {*} file 
+   * @param {*} options 
+   * @returns 
+   */
+  static async putWeb(file, options) {
+    options = {
+      ...options,
+      key: (options.keyPrefix || '') + file.name,
+      date: new Date,
+      contentType: file.type
+    }
+
+    const url = `https://${options.bucket}.${options.awsUrl || AWS_DEFAULT_S3_HOST}`
+    const method = "POST"
+    const policy = S3Policy.generate(options)
+
+    if (file.uri && file.uri.startsWith("blob:")) {
+      let blob = await fetch(file.uri).then(r => r.blob());
+      return Request.create(url, method, policy)
+        .setWeb("file", file.name, blob)
+        .send()
+        .then(setBodyAsParsedXML)
+    }
+
+    return Request.create(url, method, policy)
+        .set("file", file)
+        .send()
+        .then(setBodyAsParsedXML)
+  }
 }

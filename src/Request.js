@@ -75,6 +75,18 @@ export class Request {
     return this;
   }
 
+  /**
+   * Use this method to upload blobs
+   * @param {*} key 
+   * @param {*} name - Name of the file. Represents the what name it will be stored with
+   * @param {*} blob - Blob instance
+   * @returns 
+   */
+  setWeb(key, name, blob) {
+    this._formData.append(key, blob, name);
+    return this;
+  }
+
   send() {
     this._xhr.send(this._formData);
     return this;
